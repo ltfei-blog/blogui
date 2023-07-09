@@ -1,18 +1,25 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 defineOptions({
   name: 'BButton'
 })
 
-// const classString = ['default']
-const disabled = ref(false)
+withDefaults(
+  defineProps<{
+    type: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'
+    disabled?: boolean
+  }>(),
+  {
+    type: 'default'
+  }
+)
 </script>
 
 <template>
-  <button :disabled="disabled">
+  <button class="b-button" :class="`b-button_${type}`" :disabled="disabled">
     <slot></slot>
   </button>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="less" scoped>
+@import url(./button.less);
+</style>

@@ -1,0 +1,59 @@
+@import url(../../../theme/var.less);
+
+.b-button {
+  padding: 8px 12px;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 0;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  outline: none;
+  font-weight: 500;
+  user-select: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  box-sizing: border-box;
+  font-size: 14px;
+  background-color: @white;
+  margin-left: 12px;
+  border: 1px solid #aaaaaa6e;
+  color: @black;
+  
+  &:hover {
+    border: 1px solid lighten(@primary, 25%);
+    background-color: lighten(@primary, 33%);
+    color: @primary;
+  }
+  &:active {
+    border: 1px solid lighten(@primary, 10%);
+  }
+  &:disabled {
+    color: lighten(@black, 50%);
+    border: 1px solid #aaaaaa6e;
+    background-color: @white;
+    cursor: no-drop;
+  }
+}
+
+
+each(.colors(), .(@v, @k, @i) {
+    .b-button.b-button_@{k} {
+      background-color: @v;
+      color: @white;
+      border:none;
+
+      &:hover {
+        background-color: lighten(@v, 10%);
+      }
+
+      &:active {
+        background-color: lighten(@v, -10%);
+      }
+
+      &:disabled {
+        background-color: lighten(@v, 20%);
+      }
+    }
+  })

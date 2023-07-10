@@ -14,3 +14,8 @@ Commonly used button.
 button/basic
 
 :::
+:::demo 使用 `type`, `plain`, `round` 和 `circle` 定义按钮样式
+
+button/basic
+
+:::

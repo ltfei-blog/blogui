@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { mdPlugin } from './config/plugins'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -12,5 +13,8 @@ export default defineConfig({
         collapsed: false
       }
     ]
+  },
+  markdown: {
+    config: (md) => mdPlugin(md)
   }
 })

@@ -1,9 +1,11 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'button'
+  name: 'Button'
 })
 </script>
 
-<template>button</template>
+<template>
+  <button>i am a button</button>
+</template>
 
 <style lang="less" scoped></style>

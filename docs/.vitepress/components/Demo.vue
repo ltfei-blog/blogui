@@ -35,6 +35,13 @@ const showExample = () => {
   }
   show = !show
 }
+
+const basePath = '../../examples/:path.vue'
+const demo = () => {
+  console.log(basePath.replace(':path', decodeProps.value.path))
+
+  return props.demos[basePath.replace(':path', decodeProps.value.path)].default
+}
 </script>
 
 <template>
@@ -43,7 +50,7 @@ const showExample = () => {
       <div v-html="decodeProps.description"></div>
       <div class="example">
         <div class="example_component">
-          <component :is="demos['../../examples/button/basic.vue'].default"></component>
+          <component :is="demo()"></component>
         </div>
         <div class="buttons">
           <icon-code size="20" @click="showExample" />

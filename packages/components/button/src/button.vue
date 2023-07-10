@@ -5,7 +5,7 @@ defineOptions({
 
 withDefaults(
   defineProps<{
-    type: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'
+    type?: 'default' | 'primary' | 'success' | 'info' | 'warning' | 'danger'
     disabled?: boolean
   }>(),
   {

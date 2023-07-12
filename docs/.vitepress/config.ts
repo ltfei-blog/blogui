@@ -18,6 +18,10 @@ export default defineConfig({
           {
             link: 'zh-CN/component/input.md',
             text: 'Input 输入框'
+          },
+          {
+            link: 'zh-CN/component/image.md',
+            text: 'Image 图片'
           }
         ]
       },
@@ -38,6 +42,9 @@ export default defineConfig({
           },
           {
             text: 'Infinite Scroll 无限滚动(todo)'
+          },
+          {
+            text: 'UserInfo 用户信息(todo)'
           }
         ]
       },

@@ -1,7 +1,13 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "packages/components/**/*", "packages/**/*"],
-  "exclude": ["src/**/__tests__/*"],
+  "include": [
+    "env.d.ts",
+    "play/**/*",
+    "play/**/*.vue",
+    "packages/components/**/*",
+    "packages/**/*"
+  ],
+  "exclude": ["play/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",

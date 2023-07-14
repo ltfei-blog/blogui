@@ -20,6 +20,13 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "packages/**/*"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["play/**/*.ts", "play/**/*.d.ts", "play/**/*.tsx", "play/**/*.vue", "packages/**/*"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
 }

@@ -29,6 +29,10 @@ export default defineConfig({
         text: '组件',
         items: [
           {
+            link: 'zh-CN/component/avatar.md',
+            text: 'Avatar 头像'
+          },
+          {
             text: 'Card 卡片(todo)'
           },
           {

@@ -38,3 +38,12 @@ avatar/fit
 avatar/frame
 
 :::
+
+## 头像徽章
+
+可以在头像边角展示徽章、认证标识、等级等信息
+:::demo 使用`placements`插槽和`avatar_badge_placement`属性设置徽章
+
+avatar/badge
+
+:::

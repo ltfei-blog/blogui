@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { HTMLAttributes, computed } from 'vue'
 import BImage from '../../image/'
 defineOptions({
   name: 'BAvatar'
@@ -14,11 +14,23 @@ const props = withDefaults(
     size?: number | 'large' | 'default' | 'small'
     avatar_frame_src?: string
     avatar_frame_size?: number
+    avatar_badge_placement?:
+      | 'left-top'
+      | 'right-top'
+      | 'left-bottom'
+      | 'right-bottom'
+      | {
+          left?: string
+          right?: string
+          bottom?: string
+          top?: string
+        }
   }>(),
   {
     size: 'default',
     shape: 'circle',
-    fit: 'cover'
+    fit: 'cover',
+    avatar_badge_placement: 'right-bottom'
   }
 )
 defineEmits(['error'])
@@ -41,10 +53,34 @@ const size = computed(() => {
 const frameSize = computed(() => {
   return props.avatar_frame_size || size.value
 })
-/**
- * todo：
- * 头像徽章（不同方位
- */
+const placementStyle = computed((): HTMLAttributes['style'] => {
+  if (typeof props.avatar_badge_placement == 'object') {
+    console.log(props.avatar_badge_placement)
+
+    return props.avatar_badge_placement
+  }
+  if (props.avatar_badge_placement == 'left-top') {
+    return {
+      left: 0,
+      top: 0
+    }
+  } else if (props.avatar_badge_placement == 'right-top') {
+    return {
+      top: 0,
+      right: 0
+    }
+  } else if (props.avatar_badge_placement == 'left-bottom') {
+    return {
+      bottom: 0,
+      left: 0
+    }
+  } else if (props.avatar_badge_placement == 'right-bottom') {
+    return {
+      bottom: 0,
+      right: 0
+    }
+  }
+})
 </script>
 
 <template>
@@ -64,6 +100,9 @@ const frameSize = computed(() => {
     <slot name="frame">
       <b-image v-if="avatar_frame_src" class="b-image_frame" :src="avatar_frame_src" />
     </slot>
+    <div class="b-image_badge" :style="placementStyle">
+      <slot name="badge"></slot>
+    </div>
   </div>
 </template>
 
@@ -95,6 +134,10 @@ const frameSize = computed(() => {
     margin: auto;
     width: v-bind('frameSize+"px"');
     height: v-bind('frameSize+"px"');
+  }
+  .b-image_badge {
+    display: inline-block;
+    position: absolute;
   }
 }
 </style>

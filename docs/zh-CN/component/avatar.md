@@ -30,3 +30,11 @@ avatar/type
 avatar/fit
 
 :::
+
+## 头像框
+
+:::demo 可使用`avatar_frame_src`和`avatar_frame_size`设置头像框，也可使用`frame`插槽自定义头像框
+
+avatar/frame
+
+:::

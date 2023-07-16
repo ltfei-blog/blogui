@@ -20,4 +20,4 @@ tsconfig.node.json
 tsconfig.vitest.json
 vite.config.ts
 vitest.config.ts
-yarn.lock
+pnpm-workspace.yaml

@@ -1,7 +1,6 @@
 {
-  "name": "blogui",
+  "name": "@ltfei-blog/blogui",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "dev": "yarn --cwd play dev",
     "build": "run-p type-check build-only",
@@ -15,7 +14,9 @@
     "cz": "git-cz",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "prerelease": "yarn build",
+    "release": "yarn publish --access=public"
   },
   "workspaces": [
     "play",

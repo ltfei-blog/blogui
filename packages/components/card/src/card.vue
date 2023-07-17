@@ -1,20 +1,51 @@
 <script setup lang="ts">
+import { computed, onUnmounted, ref } from 'vue'
 import { BAvatar } from '../../avatar/'
 import { BImage } from '../../image/'
 defineOptions({
   name: 'BCard'
 })
-defineProps<{
+const props = defineProps<{
   avatar: string
   username: string
   title: string
   desc: string
   cover?: string
+  // todo: autoCollapse
+  collapse?: boolean
+  autoCollapse?: number
 }>()
+
+/**
+ * 监听resize的折叠选项
+ */
+const collapse = ref(false)
+const onResize = () => {
+  if (!props.autoCollapse) {
+    return
+  }
+  collapse.value = document.body.clientWidth < props.autoCollapse
+}
+const autoCollapse = () => {
+  window.addEventListener('resize', onResize)
+  onUnmounted(() => {
+    window.removeEventListener('resize', onResize)
+  })
+}
+if (props.autoCollapse) {
+  autoCollapse()
+}
+
+/**
+ * props.collapse 和 autoCollapse 综合的折叠选项
+ */
+const isCollapse = computed(() => {
+  return props.collapse || collapse.value
+})
 </script>
 
 <template>
-  <div class="b-card">
+  <div class="b-card" :class="isCollapse ? 'b-card_collapse' : ''">
     <header class="b-card_header">
       <!-- todo: 插槽 -->
       <b-avatar class="b-card_avatar" :src="avatar" :size="38"></b-avatar>
@@ -47,7 +78,7 @@ defineProps<{
   padding: 20px;
   border-radius: 25px;
   background-color: #fff;
-  // box-sizing: border-box;
+  --min: 500px;
 }
 .b-card_header {
   display: flex;
@@ -90,6 +121,7 @@ defineProps<{
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
+      height: 62px;
     }
     // margin-right: 22px;
     padding-right: 22px;
@@ -112,6 +144,21 @@ defineProps<{
   align-items: center;
   .b-card_footer_item {
     margin-right: 20px;
+  }
+}
+// 折叠相关样式
+.b-card {
+  .b-card_content,
+  .b-card_footer {
+    transition: margin 0.3s;
+  }
+}
+
+.b-card_collapse {
+  .b-card_content,
+  .b-card_footer {
+    transition: margin 0.3s;
+    margin-left: 0;
   }
 }
 </style>

@@ -47,8 +47,9 @@ const isCollapse = computed(() => {
 <template>
   <div class="b-card" :class="isCollapse ? 'b-card_collapse' : ''">
     <header class="b-card_header">
-      <!-- todo: 插槽 -->
-      <b-avatar class="b-card_avatar" :src="avatar" :size="38"></b-avatar>
+      <slot name="avatar" :avatar="avatar">
+        <b-avatar class="b-card_avatar" :src="avatar" :size="38"></b-avatar>
+      </slot>
       <div class="right">
         <div class="username">{{ username }}</div>
         <!-- todo: 封装formatDate formatUsername -->
@@ -66,9 +67,11 @@ const isCollapse = computed(() => {
     </div>
     <footer class="b-card_footer">
       <!-- todo: 按钮图标 -->
-      <div class="b-card_footer_item">73</div>
-      <div class="b-card_footer_item">73</div>
-      <div class="b-card_footer_item">73</div>
+      <slot name="footer">
+        <div class="b-card_footer_item">73</div>
+        <div class="b-card_footer_item">73</div>
+        <div class="b-card_footer_item">73</div>
+      </slot>
     </footer>
   </div>
 </template>

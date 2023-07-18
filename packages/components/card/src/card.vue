@@ -76,6 +76,7 @@ const isCollapse = computed(() => {
   padding: 20px;
   border-radius: 25px;
   background-color: #fff;
+  line-height: 1.3;
 }
 .b-card_header {
   display: flex;

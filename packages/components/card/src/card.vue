@@ -66,12 +66,7 @@ const isCollapse = computed(() => {
       </div>
     </div>
     <footer class="b-card_footer">
-      <!-- todo: 按钮图标 -->
-      <slot name="footer">
-        <div class="b-card_footer_item">73</div>
-        <div class="b-card_footer_item">73</div>
-        <div class="b-card_footer_item">73</div>
-      </slot>
+      <slot name="footer"> </slot>
     </footer>
   </div>
 </template>
@@ -81,7 +76,6 @@ const isCollapse = computed(() => {
   padding: 20px;
   border-radius: 25px;
   background-color: #fff;
-  --min: 500px;
 }
 .b-card_header {
   display: flex;
@@ -145,9 +139,6 @@ const isCollapse = computed(() => {
   margin-left: 48px;
   display: flex;
   align-items: center;
-  .b-card_footer_item {
-    margin-right: 20px;
-  }
 }
 // 折叠相关样式
 .b-card {

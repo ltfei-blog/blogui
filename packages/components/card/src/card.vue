@@ -5,16 +5,22 @@ import { BImage } from '../../image/'
 defineOptions({
   name: 'BCard'
 })
-const props = defineProps<{
-  avatar: string
-  username: string
-  title: string
-  desc: string
-  cover?: string
-  // todo: autoCollapse
-  collapse?: boolean
-  autoCollapse?: number
-}>()
+const props = withDefaults(
+  defineProps<{
+    avatar?: string
+    username?: string
+    date?: string | Date | number
+    title: string
+    desc: string
+    viewUser?: boolean
+    cover?: string
+    collapse?: boolean
+    autoCollapse?: number
+  }>(),
+  {
+    viewUser: true
+  }
+)
 
 /**
  * 监听resize的折叠选项
@@ -38,15 +44,16 @@ if (props.autoCollapse) {
 
 /**
  * props.collapse 和 autoCollapse 综合的折叠选项
+ * 优先级 viewUser > collapse > autoCollapse
  */
 const isCollapse = computed(() => {
-  return props.collapse || collapse.value
+  return !props.viewUser || props.collapse || collapse.value
 })
 </script>
 
 <template>
   <div class="b-card" :class="isCollapse ? 'b-card_collapse' : ''">
-    <header class="b-card_header">
+    <header class="b-card_header" v-if="viewUser">
       <slot name="avatar" :avatar="avatar">
         <b-avatar class="b-card_avatar" :src="avatar" :size="38"></b-avatar>
       </slot>
@@ -66,6 +73,8 @@ const isCollapse = computed(() => {
       </div>
     </div>
     <footer class="b-card_footer">
+      <!-- 隐藏用户信息时 日期在底部展示 -->
+      <div class="date" v-if="!viewUser">2021-1-1</div>
       <slot name="footer"> </slot>
     </footer>
   </div>
@@ -140,6 +149,9 @@ const isCollapse = computed(() => {
   margin-left: 48px;
   display: flex;
   align-items: center;
+  .date {
+    margin-right: 20px;
+  }
 }
 // 折叠相关样式
 .b-card {

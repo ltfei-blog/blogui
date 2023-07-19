@@ -138,7 +138,8 @@ const isCollapse = computed(() => {
     width: 138px;
     height: 102px;
     flex-shrink: 0;
-    // margin-left: 22px;
+    border-radius: 15px;
+    overflow: hidden;
     .b-image {
       width: 100%;
       height: 100%;

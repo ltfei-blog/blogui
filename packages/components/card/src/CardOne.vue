@@ -30,7 +30,7 @@ withDefaults(
         {{ desc }}
       </div>
       <footer class="footer">
-        <div class="user">
+        <div class="user" v-if="viewUser">
           <div class="avatar">
             <slot name="avatar">
               <b-avatar :src="avatar" fit="cover" />

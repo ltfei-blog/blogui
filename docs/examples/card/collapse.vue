@@ -12,11 +12,14 @@ const data = {
   cover:
     'https://static-1259453062.cos.ap-shanghai.myqcloud.com/user1/20230609105316-%7BEED195D8-5E49-450a-958E-13D931C6F0A4%7D.png'
 }
+
+const collapse = ref(false)
 </script>
 
 <template>
   <h3>折叠</h3>
-  <b-card v-bind="data" :collapse="true">
+  <b-button @click="collapse = !collapse">切换折叠状态</b-button>
+  <b-card v-bind="data" :collapse="collapse">
     <template #footer>
       <b-card-footer-item text="10">
         <template #icon>
@@ -47,7 +50,7 @@ const data = {
   </b-card>
 </template>
 
-<style>
+<style scoped>
 .b-card {
   border: 1px solid #aaa;
 }

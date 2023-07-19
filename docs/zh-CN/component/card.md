@@ -1,15 +1,15 @@
 ---
-title: Card 卡片
+title: Card 文章卡片
 lang: zh-CN
 ---
 
-# Card 卡片
+# Card 文章卡片
 
 文章卡片
 
 ## 基础用法
 
-:::demo
+:::demo 提供不同样式的`Card`组件
 
 card/basic
 

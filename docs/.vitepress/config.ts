@@ -33,7 +33,7 @@ export default defineConfig({
             text: 'Avatar 头像'
           },
           {
-            text: 'Card 卡片',
+            text: 'Card 文章卡片',
             link: 'zh-CN/component/card.md'
           },
           {

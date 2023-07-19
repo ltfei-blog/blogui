@@ -3,7 +3,7 @@ defineOptions({
   name: 'BCardFooterItem'
 })
 defineProps<{
-  icon?: string
+  icon?: string | object
   text?: string
 }>()
 defineEmits(['click'])
@@ -12,7 +12,12 @@ defineEmits(['click'])
 <template>
   <div class="b-card-footer-item" @click="(e) => $emit('click', e)">
     <slot name="icon">
-      <div class="icon">{{ icon }}</div>
+      <template v-if="icon">
+        <div class="icon" v-if="typeof icon == 'string'">{{ icon }}</div>
+        <div class="icon" v-else>
+          <component :is="icon" />
+        </div>
+      </template>
     </slot>
     <slot name="text">
       <div class="text">{{ text }}</div>

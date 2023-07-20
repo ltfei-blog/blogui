@@ -37,10 +37,8 @@ export default defineConfig({
             link: 'zh-CN/component/card.md'
           },
           {
-            text: 'Comment 评论(todo)'
-          },
-          {
-            text: 'Avatar 头像(todo)'
+            text: 'Comment 评论',
+            link: 'zh-CN/component/comment.md'
           },
           {
             text: 'Editor 编辑器(todo)'

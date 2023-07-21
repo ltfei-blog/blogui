@@ -1,10 +1,10 @@
 {
   "name": "blogui",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "pnpm -C play dev",
-    "build": "pnpm -C packages/blogui exec vite build",
+    "build": "pnpm -C packages/blogui build",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write ./",
     "prepare": "husky install",
@@ -13,7 +13,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "prerelease": "pnpm build",
-    "release": "pnpm -C packages/blogui publish --access=public"
+    "release": "pnpm -C packages/blogui publish"
   },
   "workspaces": [
     "play",

@@ -1,10 +1,14 @@
 {
   "name": "@ltfei-blog/blogui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "https://github.com/ltfei-blog/blogui",
   "author": "ltfei <ltfei@ltfei.cn>",
   "license": "MIT",
   "main": "dist/index.lib.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "vite build && tsc"
+  },
   "exports": {
     ".": {
       "import": "./dist/index-lib.mjs",

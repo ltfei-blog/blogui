@@ -89,6 +89,9 @@ importers:
 
   docs:
     dependencies:
+      '@ltfei-blog/blogui':
+        specifier: workspace:^
+        version: link:../packages/blogui
       markdown-it:
         specifier: ^13.0.1
         version: 13.0.1
@@ -123,6 +126,20 @@ importers:
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
+
+  packages/blogui:
+    dependencies:
+      '@blogui/components':
+        specifier: workspace:^
+        version: link:../components
+      '@vue/runtime-core':
+        specifier: ^3.3.4
+        version: 3.3.4
+      vue:
+        specifier: ^3.3.4
+        version: 3.3.4
+
+  packages/components: {}
 
   play:
     devDependencies:

@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
+  "private": true,
   "dependencies": {
+    "@ltfei-blog/blogui": "workspace:^",
     "markdown-it": "^13.0.1",
     "markdown-it-container": "^3.0.0",
     "prism-theme-vars": "^0.2.4"

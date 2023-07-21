@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Comment } from 'types'
+import { Comment } from '@ltfei-blog/blogui'
 import { GoodTwo as IconGoodTwo, Comment as IconComment } from '@icon-park/vue-next'
 
 const comments: Comment[] = [

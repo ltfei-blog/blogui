@@ -1,13 +1,10 @@
 {
-  "name": "@ltfei-blog/blogui",
+  "name": "blogui",
   "version": "0.0.2",
+  "private": true,
   "scripts": {
     "dev": "pnpm -C play dev",
-    "build": "run-p type-check build-only",
-    "preview": "vite preview",
-    "test:unit": "vitest",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "build": "pnpm -C packages/blogui exec vite build",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write ./",
     "prepare": "husky install",
@@ -16,11 +13,12 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "prerelease": "pnpm build",
-    "release": "pnpm publish --access=public"
+    "release": "pnpm -C packages/blogui publish --access=public"
   },
   "workspaces": [
     "play",
-    "docs"
+    "docs",
+    "packages/*"
   ],
   "dependencies": {
     "less": "^4.1.3",

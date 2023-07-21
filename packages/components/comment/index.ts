@@ -7,6 +7,6 @@ export const BCommentItem = withInstall(CommentItem)
 export const BCommentFooterItem = withInstall(CommentFooterItem)
 export const BComment = withInstall(comment)
 
-export * from './src/types'
+export type { Comment, CommentContent, CommentReply } from './src/types'
 
 export default BComment

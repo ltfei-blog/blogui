@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, 'packages/components/index.ts'),
+      entry: resolve(__dirname, 'build', 'index.ts'),
       name: 'lib',
       // the proper extensions will be added
       fileName: 'index.lib'

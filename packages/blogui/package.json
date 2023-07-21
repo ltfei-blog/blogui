@@ -1,0 +1,19 @@
+{
+  "name": "@ltfei-blog/blogui",
+  "version": "0.1.0",
+  "repository": "https://github.com/ltfei-blog/blogui",
+  "author": "ltfei <ltfei@ltfei.cn>",
+  "license": "MIT",
+  "main": "dist/index.lib.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index-lib.mjs",
+      "require": "./dist/index-lib.umd.cjs"
+    }
+  },
+  "dependencies": {
+    "@blogui/components": "workspace:^",
+    "@vue/runtime-core": "^3.3.4",
+    "vue": "^3.3.4"
+  }
+}

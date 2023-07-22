@@ -10,8 +10,9 @@ import {
   BImage,
   BInput
 } from '@ltfei-blog/blogui-components'
+import type { Plugin } from '@vue/runtime-core'
 
-export default [
+export const components: Plugin[] = [
   BAvatar,
   BButton,
   BCard,

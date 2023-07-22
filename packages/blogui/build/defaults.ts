@@ -1,4 +1,4 @@
 import { makeInstaller } from './makeInstall'
-import Components from './components'
+import { components } from './components'
 
-export default makeInstaller(Components)
+export default makeInstaller(components)

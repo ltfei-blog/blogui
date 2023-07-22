@@ -1,16 +1,32 @@
+// {
+//   "compilerOptions": {
+//     "emitDeclarationOnly": true, // 只输出声明文件(ts 产物)
+//     "declaration": true, // 自动生成声明文件
+//     "declarationDir": "dist", // 声明文件生成的目录
+//     "baseUrl": "../../packages/components/",
+//     "outDir": "dist",
+//     "rootDir": "../../packages/components",
+//     "paths": {
+//       "@ltfei-blog/*": ["packages/*"]
+//     }
+//   },
+
+//   "include": ["../../packages/components", "../../env.d.ts"],
+//   "exclude": ["dist"]
+// }
 {
   "compilerOptions": {
     "emitDeclarationOnly": true, // 只输出声明文件(ts 产物)
     "declaration": true, // 自动生成声明文件
     "declarationDir": "dist", // 声明文件生成的目录
-    "baseUrl": "../../packages/components/",
+    "baseUrl": "./build",
     "outDir": "dist",
-    "rootDir": "../../packages/components",
+    "rootDir": "./build",
     "paths": {
       "@ltfei-blog/*": ["packages/*"]
     }
   },
 
-  "include": ["../../packages/components", "../../env.d.ts"],
+  "include": ["build/index.ts"],
   "exclude": ["dist"]
 }

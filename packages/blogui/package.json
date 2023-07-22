@@ -9,12 +9,6 @@
   "scripts": {
     "build": "vite build && tsc"
   },
-  "exports": {
-    ".": {
-      "import": "./dist/index-lib.mjs",
-      "require": "./dist/index-lib.umd.cjs"
-    }
-  },
   "dependencies": {
     "@blogui/components": "workspace:^",
     "@vue/runtime-core": "^3.3.4",

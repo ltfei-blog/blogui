@@ -1,6 +1,6 @@
 {
   "name": "@ltfei-blog/blogui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": "https://github.com/ltfei-blog/blogui",
   "author": "ltfei <ltfei@ltfei.cn>",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "build": "vite build && tsc"
   },
   "dependencies": {
-    "@blogui/components": "workspace:^",
+    "@ltfei-blog/blogui-components": "workspace:^",
     "@vue/runtime-core": "^3.3.4",
     "vue": "^3.3.4"
   }

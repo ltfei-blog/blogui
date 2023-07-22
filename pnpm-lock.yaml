@@ -129,7 +129,7 @@ importers:
 
   packages/blogui:
     dependencies:
-      '@blogui/components':
+      '@ltfei-blog/blogui-components':
         specifier: workspace:^
         version: link:../components
       '@vue/runtime-core':
@@ -141,7 +141,7 @@ importers:
 
   packages/components:
     dependencies:
-      '@blogui/utils':
+      '@ltfei-blog/blogui-utils':
         specifier: workspace:^
         version: link:../utils
 

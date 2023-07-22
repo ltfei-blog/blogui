@@ -9,7 +9,7 @@ import {
   BCommentItem,
   BImage,
   BInput
-} from '@blogui/components'
+} from '@ltfei-blog/blogui-components'
 
 export default [
   BAvatar,

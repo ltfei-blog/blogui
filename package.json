@@ -13,7 +13,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "prerelease": "pnpm build",
-    "release": "pnpm -C packages/blogui publish"
+    "release": "pnpm -r publish --access public"
   },
   "workspaces": [
     "play",

@@ -22,6 +22,10 @@ export default defineConfig({
           {
             link: 'zh-CN/component/image.md',
             text: 'Image 图片'
+          },
+          {
+            link: 'zh-CN/component/transition.md',
+            text: 'Transition 过渡动画'
           }
         ]
       },

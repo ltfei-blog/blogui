@@ -8,7 +8,8 @@ import {
   BCommentFooterItem,
   BCommentItem,
   BImage,
-  BInput
+  BInput,
+  BTransitionZoomY
 } from '@ltfei-blog/blogui-components'
 import type { Plugin } from '@vue/runtime-core'
 
@@ -22,5 +23,6 @@ export const components: Plugin[] = [
   BCommentFooterItem,
   BCommentItem,
   BImage,
-  BInput
+  BInput,
+  BTransitionZoomY
 ]

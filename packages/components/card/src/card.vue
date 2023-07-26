@@ -2,6 +2,8 @@
 import { computed, onUnmounted, ref } from 'vue'
 import { BAvatar } from '../../avatar/'
 import { BImage } from '../../image/'
+import { formatDate } from '@ltfei-blog/blogui-utils/dayjs'
+
 defineOptions({
   name: 'BCard'
 })
@@ -59,8 +61,7 @@ const isCollapse = computed(() => {
       </slot>
       <div class="right">
         <div class="username">{{ username }}</div>
-        <!-- todo: 封装formatDate formatUsername -->
-        <div class="date">date</div>
+        <div class="date">{{ formatDate(date) }}</div>
       </div>
     </header>
     <div class="b-card_content">

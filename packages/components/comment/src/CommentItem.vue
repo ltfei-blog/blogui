@@ -6,6 +6,8 @@ import { CommentContent } from './types'
 import CommentReply from './CommentReply.vue'
 import { ref } from 'vue'
 import * as eventBus from './eventBus'
+import { formatDate } from '@ltfei-blog/blogui-utils/dayjs'
+
 defineOptions({
   name: 'BCommentItem'
 })
@@ -62,7 +64,7 @@ const onClickShowReply = () => {
           {{ content }}
         </div>
         <div class="footer">
-          <div class="date">{{ date }}</div>
+          <div class="date">{{ formatDate(date) }}</div>
           <!-- todo: icon -->
           <b-footer-icon-item
             :text="likeCount.toString()"

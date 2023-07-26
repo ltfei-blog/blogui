@@ -5,6 +5,7 @@ import { BFooterIconItem, FooterIconItemClickEvent } from '../../footer-icon-ite
 import { CommentContent } from './types'
 import CommentReply from './CommentReply.vue'
 import { ref } from 'vue'
+import * as eventBus from './eventBus'
 defineOptions({
   name: 'BCommentItem'
 })
@@ -29,6 +30,21 @@ const onClickLike = (e: FooterIconItemClickEvent) => {
   } else {
     emit('unLike', e)
   }
+}
+
+eventBus.on('closeAllReply', () => {
+  showReply.value = false
+})
+
+const onClickShowReply = () => {
+  // 已打卡 关闭
+  if (showReply.value) {
+    return (showReply.value = false)
+  }
+  // 触发关闭所有的事件
+  eventBus.emit('closeAllReply')
+  // 打开当前的回复
+  showReply.value = true
 }
 </script>
 
@@ -58,7 +74,7 @@ const onClickLike = (e: FooterIconItemClickEvent) => {
               <slot name="likeIcon"></slot>
             </template>
           </b-footer-icon-item>
-          <div class="reply" @click="showReply = !showReply">回复</div>
+          <div class="reply" @click="onClickShowReply">回复</div>
           <slot name="footer"></slot>
         </div>
       </div>

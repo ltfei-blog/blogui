@@ -14,7 +14,9 @@
     "docs:preview": "vitepress preview docs",
     "prerelease": "pnpm build",
     "release": "pnpm -r publish --access public",
-    "test": "vitest",
+    "test:utils": "pnpm -C packages/utils exec vitest",
+    "test:components": "pnpm -C packages/components exec vitest",
+    "test": "run-p \"test:utils --run\" \"test:components --run\"",
     "coverage": "vitest run --coverage"
   },
   "workspaces": [

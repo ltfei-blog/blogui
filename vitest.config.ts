@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config'
-export default defineConfig({
-  test: {}
-})
+import { defineConfig, mergeConfig } from 'vitest/config'
+import viteConfig from './vitest.setup'
+
+export default mergeConfig(viteConfig, defineConfig({}))

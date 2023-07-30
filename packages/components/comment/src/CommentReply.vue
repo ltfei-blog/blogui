@@ -1,18 +1,25 @@
 <script setup lang="ts">
 import { BInput } from '../../input/'
 import { BButton } from '../../button/'
+import { ref } from 'vue'
 defineOptions({
   name: 'BCommentReply'
 })
+
+defineEmits<{
+  (e: 'reply', value: string): void
+}>()
+
+const content = ref('')
 </script>
 
 <template>
   <div class="b-comment-reply">
-    <b-input type="textarea" autosize placeholder="发一条友善的评论"></b-input>
+    <b-input type="textarea" v-model="content" autosize placeholder="发一条友善的评论"></b-input>
     <footer class="footer">
       <div class="left"></div>
       <div class="right">
-        <b-button type="primary">发送</b-button>
+        <b-button type="primary" @click="$emit('reply', content)">发送</b-button>
       </div>
     </footer>
   </div>

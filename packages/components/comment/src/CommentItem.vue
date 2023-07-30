@@ -2,7 +2,7 @@
 import { BAvatar } from '../../avatar/'
 import { BTransitionZoomY } from '../../transition/'
 import { BFooterIconItem, FooterIconItemClickEvent } from '../../footer-icon-item/'
-import { CommentContent } from './types'
+import { CommentContent, CommentReplyEvent } from './types'
 import CommentReply from './CommentReply.vue'
 import { ref } from 'vue'
 import * as eventBus from './eventBus'
@@ -21,6 +21,7 @@ const emit = defineEmits<{
   (event: 'like', data: FooterIconItemClickEvent): void
   (event: 'unLike', data: FooterIconItemClickEvent): void
   (event: 'clickLike', value: FooterIconItemClickEvent): void
+  (event: 'reply', data: CommentReplyEvent): void
 }>()
 
 const showReply = ref(false)
@@ -84,7 +85,11 @@ const onClickShowReply = () => {
     <b-transition-zoom-y>
       <!-- todo: fix BInput autosize -->
       <!-- todo: feat auto focus -->
-      <comment-reply v-if="showReply" class="b-comment-item_reply" />
+      <comment-reply
+        v-if="showReply"
+        class="b-comment-item_reply"
+        @reply="(content) => emit('reply', { id, content })"
+      />
     </b-transition-zoom-y>
   </div>
 </template>

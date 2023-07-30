@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Comment, CommentContent, CommentReply } from './types'
+import { Comment, CommentContent, CommentReply, CommentReplyEvent } from './types'
 import { FooterIconItemClickEvent } from '../../footer-icon-item/'
 import CommentItem from './CommentItem.vue'
 defineOptions({
@@ -12,6 +12,7 @@ const emit = defineEmits<{
   (event: 'like', data: FooterIconItemClickEvent): void
   (event: 'unLike', data: FooterIconItemClickEvent): void
   (event: 'clickLike', value: FooterIconItemClickEvent): void
+  (event: 'reply', value: CommentReplyEvent): void
 }>()
 const defineBinds = (data: Comment | CommentReply): CommentContent => {
   const { content, date, userId, avatar, username, likeCount, isAuthor, id, liked } = data
@@ -31,7 +32,8 @@ const defineEvents = () => {
   return {
     like: (e: FooterIconItemClickEvent) => emit('like', e),
     unLike: (e: FooterIconItemClickEvent) => emit('unLike', e),
-    clickLike: (e: FooterIconItemClickEvent) => emit('clickLike', e)
+    clickLike: (e: FooterIconItemClickEvent) => emit('clickLike', e),
+    reply: (value: CommentReplyEvent) => emit('reply', value)
   }
 }
 </script>

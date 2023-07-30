@@ -25,3 +25,8 @@ export interface CommentReply extends CommentContent {
 export interface Comment extends CommentContent {
   reply: CommentReply[]
 }
+
+export interface CommentReplyEvent {
+  id: number | string
+  content: string
+}

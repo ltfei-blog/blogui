@@ -4,7 +4,7 @@ import { BTransitionZoomY } from '../../transition/'
 import { BFooterIconItem, FooterIconItemClickEvent } from '../../footer-icon-item/'
 import { CommentContent, CommentReplyEvent } from './types'
 import CommentReply from './CommentReply.vue'
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 import * as eventBus from './eventBus'
 import { formatDate } from '@ltfei-blog/blogui-utils/dayjs'
 
@@ -40,7 +40,7 @@ eventBus.on('closeAllReply', () => {
 })
 
 const onClickShowReply = () => {
-  // 已打卡 关闭
+  // 已打开 关闭
   if (showReply.value) {
     return (showReply.value = false)
   }
@@ -48,7 +48,13 @@ const onClickShowReply = () => {
   eventBus.emit('closeAllReply')
   // 打开当前的回复
   showReply.value = true
+
+  nextTick(() => {
+    replyRef.value && replyRef.value.focus()
+  })
 }
+
+const replyRef = ref()
 </script>
 
 <template>
@@ -89,6 +95,7 @@ const onClickShowReply = () => {
         v-if="showReply"
         class="b-comment-item_reply"
         @reply="(content) => emit('reply', { id, content })"
+        ref="replyRef"
       />
     </b-transition-zoom-y>
   </div>

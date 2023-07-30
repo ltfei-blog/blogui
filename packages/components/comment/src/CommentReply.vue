@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { BInput } from '../../input/'
+import { BInput, InputExpose } from '../../input/'
 import { BButton } from '../../button/'
-import { ref } from 'vue'
+import { nextTick, ref } from 'vue'
 defineOptions({
   name: 'BCommentReply'
 })
@@ -11,11 +11,28 @@ defineEmits<{
 }>()
 
 const content = ref('')
+const input = ref<InputExpose>()
+
+const focus = () => {
+  nextTick(() => {
+    input.value && input.value.focus()
+  })
+}
+
+defineExpose({
+  focus
+})
 </script>
 
 <template>
   <div class="b-comment-reply">
-    <b-input type="textarea" v-model="content" autosize placeholder="发一条友善的评论"></b-input>
+    <b-input
+      ref="input"
+      type="textarea"
+      v-model="content"
+      autosize
+      placeholder="发一条友善的评论"
+    ></b-input>
     <footer class="footer">
       <div class="left"></div>
       <div class="right">

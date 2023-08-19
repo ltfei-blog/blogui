@@ -1,7 +1,7 @@
 import Card from './src/card.vue'
 import CardFooterItem from './src/CardFooterItem.vue'
 import CardOne from './src/CardOne.vue'
-import { withInstall } from '../../utils/vue/install'
+import { withInstall } from '@ltfei-blog/blogui-utils/vue/install'
 
 export const BCard = withInstall(Card)
 export const BCardOne = withInstall(CardOne)

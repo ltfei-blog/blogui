@@ -1,0 +1,11 @@
+{
+  "name": "@ltfei-blog/blogui-components",
+  "version": "0.1.0",
+  "main": "index.ts",
+  "repository": "https://github.com/ltfei-blog/blogui",
+  "author": "ltfei <ltfei@ltfei.cn>",
+  "license": "MIT",
+  "dependencies": {
+    "@ltfei-blog/blogui-utils": "workspace:^"
+  }
+}

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useAutoSize } from './utils'
+import { InputExpose } from './types'
 
 defineOptions({
   name: 'BInput'
@@ -28,6 +29,7 @@ const props = withDefaults(
 )
 const emit = defineEmits(['update:modelValue'])
 const textarea = ref<HTMLTextAreaElement>()
+const inputRef = ref<HTMLInputElement>()
 
 const onInput = (event: Event) => {
   const target = event.target as HTMLInputElement | HTMLTextAreaElement
@@ -45,12 +47,43 @@ onMounted(() => {
     }
   }
 })
+
+/**
+ * 清除 input 值
+ */
+const clear = () => {
+  emit('update:modelValue', '')
+}
+/**
+ * 使 input 失去焦点
+ */
+const blur = () => {
+  textarea.value && textarea.value.blur()
+  inputRef.value && inputRef.value.blur()
+}
+/**
+ * 使 input 获取焦点
+ */
+const focus = () => {
+  textarea.value && textarea.value.focus()
+  inputRef.value && inputRef.value.focus()
+}
+
+defineExpose(<InputExpose>{
+  clear,
+  blur,
+  focus,
+  input: inputRef,
+  textarea: textarea,
+  ref: inputRef || textarea
+})
 </script>
 
 <template>
   <div class="b-input">
     <input
       v-if="type == 'text'"
+      ref="inputRef"
       class="b-input_inner"
       type="text"
       :value="modelValue || value"

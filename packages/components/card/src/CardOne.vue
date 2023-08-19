@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { BAvatar } from '../../avatar/'
 import { BImage } from '../../image/'
+import { formatDate } from '@ltfei-blog/blogui-utils/dayjs'
+
 defineOptions({
   name: 'BCardOne'
 })
@@ -38,7 +40,7 @@ withDefaults(
           </div>
           <div class="username">User</div>
         </div>
-        <div class="date">{{ date || '刚刚' }}</div>
+        <div class="date">{{ formatDate(date) }}</div>
         <slot name="footer"></slot>
       </footer>
     </div>

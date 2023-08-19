@@ -1,0 +1,10 @@
+{
+  "name": "@ltfei-blog/blogui-utils",
+  "version": "0.1.0",
+  "repository": "https://github.com/ltfei-blog/blogui",
+  "author": "ltfei <ltfei@ltfei.cn>",
+  "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.11.9"
+  }
+}

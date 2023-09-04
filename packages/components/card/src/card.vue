@@ -3,10 +3,12 @@ import { computed, onUnmounted, ref } from 'vue'
 import { BAvatar } from '../../avatar/'
 import { BImage } from '../../image/'
 import { formatDate } from '@ltfei-blog/blogui-utils/dayjs'
+import { useMunuClick } from './card'
 
 defineOptions({
   name: 'BCard'
 })
+
 const props = withDefaults(
   defineProps<{
     avatar?: string
@@ -18,11 +20,16 @@ const props = withDefaults(
     cover?: string
     collapse?: boolean
     autoCollapse?: number
+    to?: string
+    target?: '_self' | '_blank' | '_parent' | '_top'
+    router?: boolean
   }>(),
   {
     viewUser: true
   }
 )
+
+const { handleClick } = useMunuClick(props.to, props.router)
 
 /**
  * 监听resize的折叠选项
@@ -54,7 +61,13 @@ const isCollapse = computed(() => {
 </script>
 
 <template>
-  <div class="b-card" :class="isCollapse ? 'b-card_collapse' : ''">
+  <a
+    class="b-card"
+    :href="to"
+    :target="target"
+    @click="handleClick"
+    :class="isCollapse ? 'b-card_collapse' : ''"
+  >
     <header class="b-card_header" v-if="viewUser">
       <slot name="avatar" :avatar="avatar">
         <b-avatar class="b-card_avatar" :src="avatar" :size="38"></b-avatar>
@@ -78,7 +91,7 @@ const isCollapse = computed(() => {
       <div class="date" v-if="!viewUser">2021-1-1</div>
       <slot name="footer"> </slot>
     </footer>
-  </div>
+  </a>
 </template>
 
 <style lang="less" scoped>
@@ -87,6 +100,8 @@ const isCollapse = computed(() => {
   border-radius: 25px;
   background-color: #fff;
   line-height: 1.3;
+  color: #000;
+  text-decoration: none;
 }
 .b-card_header {
   display: flex;

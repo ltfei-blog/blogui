@@ -2,11 +2,12 @@
 import { BAvatar } from '../../avatar/'
 import { BImage } from '../../image/'
 import { formatDate } from '@ltfei-blog/blogui-utils/dayjs'
+import { useMunuClick } from './card'
 
 defineOptions({
   name: 'BCardOne'
 })
-withDefaults(
+const props = withDefaults(
   defineProps<{
     avatar?: string
     username?: string
@@ -15,15 +16,20 @@ withDefaults(
     desc: string
     viewUser?: boolean
     cover?: string
+    to?: string
+    target?: '_self' | '_blank' | '_parent' | '_top'
+    router?: boolean
   }>(),
   {
     viewUser: true
   }
 )
+
+const { handleClick } = useMunuClick(props.to, props.router)
 </script>
 
 <template>
-  <div class="b-card">
+  <a :href="to" :target="target" @click="handleClick" class="b-card">
     <div class="content">
       <div class="title">
         {{ title }}
@@ -47,7 +53,7 @@ withDefaults(
     <div class="cover" v-if="cover">
       <b-image :src="cover" fit="cover" />
     </div>
-  </div>
+  </a>
 </template>
 
 <style lang="less" scoped>
@@ -57,6 +63,8 @@ withDefaults(
   display: flex;
   align-items: center;
   overflow: hidden;
+  color: #000;
+  text-decoration: none;
   .content {
     flex: 1;
     width: 0;

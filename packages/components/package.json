@@ -1,6 +1,6 @@
 {
   "name": "@ltfei-blog/blogui-components",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "index.ts",
   "repository": "https://github.com/ltfei-blog/blogui",
   "author": "ltfei <ltfei@ltfei.cn>",

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { BAvatar } from '../../avatar/'
 import { BImage } from '../../image/'
 import { formatDate } from '@ltfei-blog/blogui-utils/dayjs'
@@ -47,9 +47,12 @@ const autoCollapse = () => {
     window.removeEventListener('resize', onResize)
   })
 }
-if (props.autoCollapse) {
-  autoCollapse()
-}
+
+onMounted(() => {
+  if (props.autoCollapse) {
+    autoCollapse()
+  }
+})
 
 /**
  * props.collapse 和 autoCollapse 综合的折叠选项

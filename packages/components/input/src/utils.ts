@@ -16,7 +16,10 @@ export const useAutoSize = (el: HTMLElement, min = 2, max?: number) => {
     el.style.height = initHeight + 'px'
     el.style.height = el.scrollHeight + 'px'
   }
-  resize()
+  /**
+   * 初始化时调用resize 会导致使用 v-show 默认隐藏再显示时出现问题
+   */
+  // resize()
   el.addEventListener('input', resize)
   onUnmounted(() => {
     el.removeEventListener('input', resize)

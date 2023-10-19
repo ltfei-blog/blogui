@@ -89,10 +89,8 @@ const replyRef = ref()
       </div>
     </div>
     <b-transition-zoom-y>
-      <!-- todo: fix BInput autosize -->
-      <!-- todo: feat auto focus -->
       <comment-reply
-        v-if="showReply"
+        v-show="showReply"
         class="b-comment-item_reply"
         @reply="(content) => emit('reply', { id, content })"
         ref="replyRef"

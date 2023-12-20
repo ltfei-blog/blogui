@@ -34,14 +34,14 @@ const { handleClick } = useMunuClick(props.to, props.router)
 /**
  * 监听resize的折叠选项
  */
-const collapse = ref(false)
+const widthCollapse = ref(false)
 const onResize = () => {
   if (!props.autoCollapse) {
     return
   }
-  collapse.value = document.body.clientWidth < props.autoCollapse
+  widthCollapse.value = document.body.clientWidth < props.autoCollapse
 }
-const autoCollapse = () => {
+const useAutoCollapse = () => {
   window.addEventListener('resize', onResize)
   onUnmounted(() => {
     window.removeEventListener('resize', onResize)
@@ -50,7 +50,7 @@ const autoCollapse = () => {
 
 onMounted(() => {
   if (props.autoCollapse) {
-    autoCollapse()
+    useAutoCollapse()
   }
 })
 
@@ -59,7 +59,7 @@ onMounted(() => {
  * 优先级 viewUser > collapse > autoCollapse
  */
 const isCollapse = computed(() => {
-  return !props.viewUser || props.collapse || collapse.value
+  return !props.viewUser || props.collapse || widthCollapse.value
 })
 </script>
 
@@ -148,6 +148,7 @@ const isCollapse = computed(() => {
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;
       height: 62px;
+      word-wrap: break-word;
     }
     // margin-right: 22px;
     padding-right: 22px;

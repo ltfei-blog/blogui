@@ -40,7 +40,7 @@ const defineEvents = () => {
 
 <template>
   <div class="b-comment">
-    <template v-for="item in data">
+    <template v-for="item in data" :key="item.id">
       <comment-item v-bind="defineBinds(item)" v-on="defineEvents()">
         <template #avatar="data">
           <slot name="avatar" :data="data" :row="item"></slot>
@@ -54,6 +54,7 @@ const defineEvents = () => {
       </comment-item>
       <comment-item
         v-for="reply in item.reply"
+        :key="reply.id"
         v-bind="defineBinds(reply)"
         v-on="defineEvents()"
         is-child

@@ -49,14 +49,14 @@ const size = computed(() => {
   } else if (props.size == 'small') {
     return 40
   }
+  // else default
+  return 50
 })
 const frameSize = computed(() => {
   return props.avatar_frame_size || size.value
 })
 const placementStyle = computed((): HTMLAttributes['style'] => {
   if (typeof props.avatar_badge_placement == 'object') {
-    console.log(props.avatar_badge_placement)
-
     return props.avatar_badge_placement
   }
   if (props.avatar_badge_placement == 'left-top') {
@@ -79,6 +79,11 @@ const placementStyle = computed((): HTMLAttributes['style'] => {
       bottom: 0,
       right: 0
     }
+  }
+  // else default
+  return {
+    left: 0,
+    top: 0
   }
 })
 </script>

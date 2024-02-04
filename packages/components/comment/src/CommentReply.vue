@@ -36,7 +36,7 @@ defineExpose({
     <footer class="footer">
       <div class="left"></div>
       <div class="right">
-        <b-button type="primary" @click="$emit('reply', content)">发送</b-button>
+        <b-button type="primary" @click="$emit('reply', content)">发 送</b-button>
       </div>
     </footer>
   </div>
@@ -49,6 +49,9 @@ defineExpose({
   .footer {
     display: flex;
     justify-content: space-between;
+    button {
+      line-height: normal;
+    }
   }
 }
 </style>

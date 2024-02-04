@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { Comment, CommentContent, CommentReply, CommentReplyEvent } from './types'
+import type {
+  Comment,
+  CommentContent,
+  CommentReply as CommentReplyType,
+  CommentReplyEvent
+} from './types'
 import { FooterIconItemClickEvent } from '../../footer-icon-item/'
 import CommentItem from './CommentItem.vue'
+import CommentReply from './CommentReply.vue'
 defineOptions({
   name: 'BComment'
 })
@@ -14,7 +20,7 @@ const emit = defineEmits<{
   (event: 'clickLike', value: FooterIconItemClickEvent): void
   (event: 'reply', value: CommentReplyEvent): void
 }>()
-const defineBinds = (data: Comment | CommentReply): CommentContent => {
+const defineBinds = (data: Comment | CommentReplyType): CommentContent => {
   const { content, date, userId, avatar, username, likeCount, isAuthor, id, liked } = data
   return {
     content,
@@ -40,6 +46,7 @@ const defineEvents = () => {
 
 <template>
   <div class="b-comment">
+    <comment-reply @reply="(content) => emit('reply', { id: 0, content })" />
     <template v-for="item in data" :key="item.id">
       <comment-item v-bind="defineBinds(item)" v-on="defineEvents()">
         <template #avatar="data">
@@ -70,7 +77,14 @@ const defineEvents = () => {
         </template>
       </comment-item>
     </template>
+    <div class="no-more">没有更多评论</div>
   </div>
 </template>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.no-more {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 20px;
+}
+</style>
